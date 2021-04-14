@@ -1,0 +1,57 @@
+### A Pluto.jl notebook ###
+# v0.14.1
+
+using Markdown
+using InteractiveUtils
+
+# ╔═╡ 094800e2-71d1-4481-b5e3-8b049b8c18e8
+begin
+	using Pkg; Pkg.add("PlutoUI")
+	using Pkg; Pkg.add("HTTP")
+end
+
+# ╔═╡ 829098e3-54a5-4d88-bdcb-11a8487eb3ed
+begin
+	using PlutoUI
+	using HTTP
+end
+
+# ╔═╡ 0b655b8e-8634-4fc7-bed9-b93dc0bb7679
+# https://github.com/fonsp/Pluto.jl/issues/245#issue-670576465
+
+# ╔═╡ 97966080-9d3e-11eb-2424-6d936c28b304
+pi
+
+# ╔═╡ c17f457b-604b-420e-b138-9334632cb994
+Sys.WORD_SIZE
+
+# ╔═╡ 360a8034-eeb9-415c-a9f1-4852229718b4
+with_terminal() do
+	for T in [Int8,Int16,Int32,Int64,Int128,UInt8,UInt16,UInt32,UInt64,UInt128]
+	   println("$(lpad(T,7)): [$(typemin(T)),$(typemax(T))]")
+	end
+end
+
+# ╔═╡ 8d292e46-1ade-49c3-bc9d-4e574fb5b050
+with_terminal() do
+	for a in [1,2,3]
+		println("$a")
+	end
+end
+
+# ╔═╡ 6bbc3d94-4c62-4acf-86f4-eaa7a4550eb6
+r = HTTP.request("GET", "http://we22.com"; verbose=3)
+
+# ╔═╡ 0f919f2d-02c4-4ee6-b799-7a0e577859e9
+println(String(r.body))
+
+# ╔═╡ Cell order:
+# ╠═0b655b8e-8634-4fc7-bed9-b93dc0bb7679
+# ╠═094800e2-71d1-4481-b5e3-8b049b8c18e8
+# ╠═829098e3-54a5-4d88-bdcb-11a8487eb3ed
+# ╠═97966080-9d3e-11eb-2424-6d936c28b304
+# ╠═c17f457b-604b-420e-b138-9334632cb994
+# ╠═360a8034-eeb9-415c-a9f1-4852229718b4
+# ╠═8d292e46-1ade-49c3-bc9d-4e574fb5b050
+# ╠═6bbc3d94-4c62-4acf-86f4-eaa7a4550eb6
+# ╠═0f919f2d-02c4-4ee6-b799-7a0e577859e9
